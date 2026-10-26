@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kushtrim Bicaj — Software Engineer</title>
+<meta name="description" content="Portfolio of Kushtrim Bicaj, a software engineer who builds practical software and solves problems through code.">
+<meta property="og:title" content="Kushtrim Bicaj — Software Engineer">
+<meta property="og:description" content="Practical software, readable code, and problem solving. Projects and approach of Kushtrim Bicaj.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0c0d10">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%A1%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header><div class="wrap"><nav aria-label="Primary">
+<a class="mono" href="#home" id="monogram" aria-label="Home"></a>
+<div class="links" id="navlinks"></div>
+<div class="right"><span class="avail" id="navAvail"><i class="dot"></i><span id="navAvailText"></span></span>
+<a class="gh" id="navGh" target="_blank" rel="noopener noreferrer"><svg class="i" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.69 1.25 3.35.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.18-3.09-.12-.29-.51-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.18 1.83 1.18 3.09 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg><span>GitHub</span></a></div>
+</nav></div></header>
+
+<main id="main">
+<section class="hero" id="home"><div class="wrap">
+<div>
+<div class="eyebrow" id="heroRole" style="margin:0 0 20px"></div>
+<div class="status" id="heroStatus"><i class="dot"></i><span id="heroStatusText"></span></div>
+<h1 id="heroTitle"></h1>
+<p id="heroText"></p>
+<div class="btns"><a class="btn pri" href="#projects">Explore My Work <svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a><a class="btn" href="#contact">Get in Touch</a><a class="btn" id="heroGh" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+</div>
+<div class="term" aria-hidden="true"><div class="bar"><b></b><b></b><b></b><span>about.ts</span></div><pre id="term"></pre></div>
+</div></section>
+
+<section id="projects"><div class="wrap">
+<div class="head rv"><p class="eyebrow">Featured projects</p><h2>Selected work</h2><p class="lede">A selection of projects, tools, and experiments I have built.</p></div>
+<div class="grid" id="projGrid"></div>
+</div></section>
+
+<section id="about"><div class="wrap two">
+<div class="rv"><p class="eyebrow">About</p><h2>Practical software, built well.</h2></div>
+<div class="rv prose" id="aboutText"></div>
+</div></section>
+
+<section id="tech"><div class="wrap">
+<div class="head rv"><p class="eyebrow">Technologies</p><h2>Tools I work with</h2><p class="lede" id="techNote"></p></div>
+<div class="skills rv" id="skills"></div>
+</div></section>
+
+<section id="principles"><div class="wrap">
+<div class="head rv"><p class="eyebrow">How I work</p><h2>What I care about when writing code</h2></div>
+<ol class="pr rv" id="pr"></ol>
+</div></section>
+
+<section class="cta" id="contact"><div class="wrap">
+<h2 class="rv">Have an interesting project in mind?</h2>
+<p class="lede rv">Email is the best way to reach me. You can also find me on GitHub and LinkedIn.</p>
+<div class="btns rv"><button class="btn pri mail" id="copyMail" type="button"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg><span id="mailLabel"></span></button>
+<a class="btn" id="mailTo">Send email</a><a class="btn" id="ctGh" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a class="btn" id="ctLi" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><span id="foot"></span><a id="footGh" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite">Email copied</div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
