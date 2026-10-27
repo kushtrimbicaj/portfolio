@@ -33,7 +33,7 @@ const SITE = {
   projects: [
     { name: "JSON Formatter & Validator", desc: "A developer utility for formatting JSON, validating syntax, and identifying errors directly in the browser.", stack: ["HTML", "CSS", "JavaScript"], visual: "json", status: "Live", demo: "https://kushtrimbicaj.github.io/json-formatter-validator/", source: "https://github.com/kushtrimbicaj/json-formatter-validator", layout: "wide" },
     { name: "Text Diff Tool", desc: "A tool for comparing two blocks of text and highlighting changes.", stack: ["JavaScript", "HTML", "CSS"], visual: "json", status: "Live", demo: "https://kushtrimbicaj.github.io/text-diff-tool/", source: "https://github.com/kushtrimbicaj/text-diff-tool", layout: "" },
-    { name: "CSV Data Quality Checker", desc: "A utility for detecting missing values, duplicate rows, and inconsistent data in CSV files.", stack: ["JavaScript", "HTML", "CSS"], visual: "csv", status: "Placeholder", demo: null, source: null, layout: "" },
+    { name: "CSV Data Quality Checker", desc: "A utility for detecting missing values, duplicate rows, and inconsistent data in CSV files.", stack: ["JavaScript", "HTML", "CSS"], visual: "csv", status: "Live", demo: "https://kushtrimbicaj.github.io/csv-data-quality-checker/", source: "https://github.com/kushtrimbicaj/csv-data-quality-checker", layout: "" },
     { name: "API Health Monitor", desc: "A dashboard for monitoring endpoints, tracking response times, and viewing service availability.", stack: ["JavaScript", "HTML", "CSS"], visual: "api", status: "Placeholder", demo: null, source: null, layout: "wide rev" }
   ]
 };
