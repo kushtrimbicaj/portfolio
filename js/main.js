@@ -39,6 +39,19 @@ const VIS = {
     const lg = (c, t) => '<span><i class="' + c + '"></i>' + t + '</span>';
     return '<div class="pv"><div class="bar"><b></b><b></b><b></b><span>dijkstra.run()</span></div><div class="pf">' + cells + '</div><div class="pfl">' +
       lg("st", "start") + lg("en", "target") + lg("wl", "wall") + lg("wt", "weight") + lg("vs", "visited") + lg("pa", "path") + '</div></div>';
+  },
+  audio: () => {
+    // a spectrum shaped like real music: strong lows, a mid hump, tapering highs
+    const n = 36;
+    const bars = Array.from({ length: n }, (_, i) => {
+      const t = i / (n - 1);
+      const h = 0.18 + 0.7 * Math.exp(-((t - 0.08) ** 2) / 0.012) + 0.32 * Math.exp(-((t - 0.45) ** 2) / 0.02) + 0.12 * Math.sin(i * 2.3) ** 2 - 0.12 * t;
+      const v = Math.max(0.1, Math.min(1, h));
+      return '<i style="--h:' + v.toFixed(2) + ';--t:' + t.toFixed(2) + ';--d:' + ((i * 0.37) % 1.1).toFixed(2) + 's"></i>';
+    }).join("");
+    const meter = (name, v) => '<span class="spl">' + name + '<i style="--v:' + v + '"></i></span>';
+    return '<div class="pv"><div class="bar"><b></b><b></b><b></b><span>soundscope / night-drive.mp3</span></div><div class="sp">' + bars + '</div>' +
+      '<div class="spm"><span class="spf"><b>124</b> BPM</span><span class="spf"><b>A minor</b></span>' + meter("bass", 0.78) + meter("mid", 0.46) + meter("treble", 0.3) + '</div></div>';
   }
 };
 

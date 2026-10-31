@@ -161,3 +161,15 @@ body.leaving main{animation:pageLift .26s cubic-bezier(.4,0,1,1) forwards}
 #allGrid{transition:opacity .18s ease,transform .18s ease}
 #allGrid.swap{opacity:0;transform:translateY(6px)}
 #allGrid .rv{transition-duration:.45s}
+
+/* SoundScope preview: spectrum bars and analysis readout */
+.sp{display:flex;align-items:flex-end;gap:3px;height:150px;padding:18px 14px 0;border-bottom:1px solid var(--line)}
+.sp i{flex:1;height:calc(var(--h) * 100%);border-radius:2px 2px 0 0;background:linear-gradient(to top,color-mix(in srgb,var(--acc) 35%,transparent),color-mix(in srgb,var(--acc) calc(55% + var(--t) * 45%),#5ec8ff));transform-origin:bottom;animation:spPulse 1.6s var(--d,0s) ease-in-out infinite alternate}
+.spm{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;padding:11px 14px;color:var(--mut);font-size:11px}
+.spf b{color:var(--fg);font-weight:500}
+.spl{display:inline-flex;align-items:center;gap:7px}
+.spl i{position:relative;width:46px;height:4px;border-radius:2px;background:var(--line);overflow:hidden}
+.spl i::after{content:"";position:absolute;inset:0;background:var(--acc);transform-origin:left;transform:scaleX(var(--v))}
+@keyframes spPulse{from{transform:scaleY(1)}to{transform:scaleY(.62)}}
+@media(max-width:640px){.sp{height:110px;gap:2px}.spl i{width:34px}}
+@media(prefers-reduced-motion:reduce){.sp i{animation:none}}
