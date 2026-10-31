@@ -52,6 +52,36 @@ const VIS = {
     const meter = (name, v) => '<span class="spl">' + name + '<i style="--v:' + v + '"></i></span>';
     return '<div class="pv"><div class="bar"><b></b><b></b><b></b><span>soundscope / night-drive.mp3</span></div><div class="sp">' + bars + '</div>' +
       '<div class="spm"><span class="spf"><b>124</b> BPM</span><span class="spf"><b>A minor</b></span>' + meter("bass", 0.78) + meter("mid", 0.46) + meter("treble", 0.3) + '</div></div>';
+  },
+  orbit: () => {
+    // A tilted view of the solar system: planets travel elliptical paths around the Sun
+    // (SVG animateMotion; static positions when reduced motion is requested).
+    const cx = 170, cy = 108, tilt = 0.36;
+    const still = !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+    // [name, orbit radius, colour, size, seconds per orbit, starting phase 0–1]
+    const planets = [
+      ["Mercury", 28, "#b9b2a8", 2, 3.2, 0.15], ["Venus", 40, "#e3bb76", 3, 5.2, 0.55], ["Earth", 54, "#5aa9ff", 3.2, 8, 0.8],
+      ["Mars", 68, "#e2774a", 2.6, 13, 0.35], ["Jupiter", 96, "#d8a27a", 6, 30, 0.62], ["Saturn", 120, "#e6cf98", 5, 46, 0.2],
+      ["Uranus", 138, "#9fe3ea", 3.8, 70, 0.9], ["Neptune", 152, "#5b7dff", 3.6, 95, 0.45]
+    ];
+    const ell = (rx, extra) => '<ellipse cx="' + cx + '" cy="' + cy + '" rx="' + rx + '" ry="' + (rx * tilt).toFixed(1) + '" ' + extra + '/>';
+    const path = rx => { const ry = (rx * tilt).toFixed(1); return "M" + (cx - rx) + " " + cy + " a" + rx + " " + ry + " 0 1 0 " + 2 * rx + " 0 a" + rx + " " + ry + " 0 1 0 " + -2 * rx + " 0"; };
+    let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    const stars = Array.from({ length: 46 }, () => '<circle cx="' + (rnd() * 400).toFixed(1) + '" cy="' + (rnd() * 210).toFixed(1) + '" r="' + (0.3 + rnd() * 0.7).toFixed(2) + '" fill="#fff" opacity="' + (0.25 + rnd() * 0.5).toFixed(2) + '"/>').join("");
+    const body = ([name, rx, col, r, dur, phase]) => {
+      const ry = rx * tilt, a = Math.PI + phase * 2 * Math.PI; // static fallback: same direction of travel
+      const pos = still ? ' transform="translate(' + (cx + rx * Math.cos(a)).toFixed(1) + ' ' + (cy - ry * Math.sin(a)).toFixed(1) + ')"' : '';
+      const ring = name === "Saturn" ? '<ellipse rx="' + r * 2.1 + '" ry="' + r * 0.7 + '" fill="none" stroke="#e6cf98" stroke-opacity=".7"/><circle r="' + r * 2.9 + '" fill="none" stroke="#e6cf98" stroke-width=".8" opacity=".85"><animate attributeName="opacity" values=".35;.9;.35" dur="2.4s" repeatCount="indefinite"/></circle>' : '';
+      const label = name === "Saturn" || name === "Earth" ? '<g class="olbl"><circle cx="' + (r + 6) + '" cy="' + (-r - 7) + '" r="2.4" fill="none" stroke="' + col + '"/><text x="' + (r + 11) + '" y="' + (-r - 4.6) + '">' + name + '</text></g>' : '';
+      const motion = still ? '' : '<animateMotion dur="' + dur + 's" begin="-' + (phase * dur).toFixed(2) + 's" repeatCount="indefinite" path="' + path(rx) + '"/>';
+      return '<g' + pos + '>' + ring + '<circle r="' + r + '" fill="' + col + '"/>' + label + motion + '</g>';
+    };
+    const svg = '<svg viewBox="0 0 400 210" role="img" aria-label="Animated preview of planets orbiting the Sun"><defs><radialGradient id="obSun"><stop offset="0" stop-color="#fff3c4"/><stop offset=".55" stop-color="#ffb347"/><stop offset="1" stop-color="#e8641c"/></radialGradient><radialGradient id="obGlow"><stop offset="0" stop-color="#ffb347" stop-opacity=".45"/><stop offset="1" stop-color="#ffb347" stop-opacity="0"/></radialGradient></defs>' +
+      stars + planets.map(p => ell(p[1], 'fill="none" stroke="' + p[2] + '" stroke-opacity=".32"')).join("") + ell(82, 'fill="none" stroke="#9aa3b5" stroke-opacity=".35" stroke-width="2.2" stroke-dasharray="0.6 3.4"') +
+      '<circle cx="' + cx + '" cy="' + cy + '" r="26" fill="url(#obGlow)"/><circle cx="' + cx + '" cy="' + cy + '" r="9" fill="url(#obSun)"/>' + planets.map(body).join("") + '</svg>';
+    return '<div class="pv"><div class="bar"><b></b><b></b><b></b><span>orbitlab / solar-system</span></div><div class="orb">' + svg +
+      '<div class="orb-time">model date ≈ today · 1× · 10 days/s</div>' +
+      '<div class="orb-card"><b>Saturn</b><span class="orb-type">♄&#xFE0E; Gas giant</span><span><em>29.4</em> yr orbit</span><span><em>285</em> moons</span></div></div></div>';
   }
 };
 
